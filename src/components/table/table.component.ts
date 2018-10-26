@@ -1,4 +1,5 @@
-import { OnInit, Component, Input } from "@angular/core";
+import { OnInit, Component, Input, Output,EventEmitter } from "@angular/core";
+
 
 
 
@@ -9,9 +10,9 @@ import { OnInit, Component, Input } from "@angular/core";
 })
 export class TableComponent implements OnInit {
     
-    @Input() ColumnHeaders: String[];
-    @Input() table: any;
-    
+    @Input()  ColumnHeaders: String[];
+    @Input()  table: any;
+    @Output() rowClicked = new EventEmitter();
 
     constructor() {
              
@@ -21,4 +22,8 @@ export class TableComponent implements OnInit {
         console.log(this.table);
     }
 
+    rowClick(row):void{
+        
+        this.rowClicked.emit(row);
+    }
 }

@@ -6,7 +6,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let row of table">
-            <td *ngFor="let column of ColumnHeaders">{{row[column]}}</td>
+            <td  *ngFor="let column of ColumnHeaders" (click)='rowClick(row);'>{{row[column]}}</td>
         </tr>
     </tbody>
   </table>
