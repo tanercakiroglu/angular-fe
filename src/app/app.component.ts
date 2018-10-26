@@ -8,4 +8,5 @@ import { LoginComponent } from 'src/components/login/login.component';
 })
 export class AppComponent {
   title = 'Cıkkkk';
+  
 }

@@ -1,0 +1,12 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th *ngFor="let column of ColumnHeaders">{{column}}</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of table">
+            <td *ngFor="let column of ColumnHeaders">{{row[column]}}</td>
+        </tr>
+    </tbody>
+  </table>
