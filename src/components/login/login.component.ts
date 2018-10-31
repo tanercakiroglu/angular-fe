@@ -1,16 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { LoginService } from "../../services/login.service";
-import { ActivatedRoute, Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first} from 'rxjs/operators';
-import { Pipe } from '@angular/core';
+
+
 
 
 
 @Component({
     selector:'login-component',
     templateUrl:'./login.html',
-    providers:[LoginService]
+    providers:[LoginService],
+    styleUrls: ['./login.css']
    
 })
 export class LoginComponent implements OnInit {
@@ -21,17 +22,18 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
         private loginService: LoginService
        ) {}
     
     ngOnInit(): void {
         this.loginForm = this.formBuilder.group({
-            email: ['', Validators.required],
-            password: ['', Validators.required],
-            vkn: ['', Validators.required],
-            phoneNumber: ['', Validators.required]
+            email:       ['',  Validators.compose(
+                         [Validators.email, Validators.required])],
+            password:    ['', Validators.required],
+            vkn:         ['', Validators.compose(
+                         [Validators.pattern('^[0-9]*$'), Validators.required])],
+            phoneNumber: ['', Validators.compose(
+                         [Validators.pattern('^[0-9]{10}$'), Validators.required])]
         });
     }
     get f() { return this.loginForm.controls; }
